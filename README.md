@@ -47,7 +47,7 @@ stock-lstm-app/
 
 ## 🔧 Installation & Usage
 
-```bash
+```
 # Clone repository
 git clone https://github.com/yourusername/stock-lstm-app.git
 cd stock-lstm-app
@@ -57,6 +57,7 @@ pip install -r requirements.txt
 
 # Launch application
 streamlit run app.py
+```
 ##✨ Credits
 -Developed by Mourakshi Thakuria
 
