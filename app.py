@@ -82,7 +82,16 @@ if st.button("Predict Next Day Price"):
         st.metric("📉 Last Close Price", f"${last_price:.2f}")
         st.metric("📈 Predicted Next Price", f"${predicted_price:.2f}")
 
-        # Investment simulation
+        # === Buy / Hold / Sell Signal ===
+        st.subheader("🧠 Strategy Recommendation")
+        if predicted_price > last_price * 1.01:
+            st.success("📈 Suggested Action: **BUY**")
+        elif predicted_price < last_price * 0.99:
+            st.error("📉 Suggested Action: **SELL**")
+        else:
+            st.info("⏸ Suggested Action: **HOLD**")
+
+        # === Investment simulation ===
         profit = (predicted_price - last_price) * (investment / last_price)
         st.subheader("💰 Investment Simulation")
         st.write(f"If you invest **${investment:.2f}** now:")
@@ -101,4 +110,3 @@ if df is not None:
         st.line_chart(df['Close_yfin'].tail(60))
     except Exception as e:
         st.warning(f"Could not plot chart: {e}")
-
