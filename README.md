@@ -31,6 +31,7 @@ An interactive Streamlit web app that predicts next-day stock prices using a dee
   ```python
   model.fit(X_train, y_train, epochs=20, batch_size=32)
   stock-lstm-app/
+  
 ##📦 Project Structure
 ├── app.py                   # Main Streamlit application
 ├── requirements.txt         # Python dependencies
