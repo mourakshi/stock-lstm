@@ -32,22 +32,29 @@ An interactive Streamlit web app that predicts next-day stock prices using a dee
   model.fit(X_train, y_train, epochs=20, batch_size=32)
   stock-lstm-app/
   
-##📦 Project Structure
-├── app.py                   # Main Streamlit application
-├── requirements.txt         # Python dependencies
+# 📦 Project Structure
+
+stock-lstm-app/
+│
+├── app.py # Main Streamlit application
+├── requirements.txt # Python dependencies
 ├── model/
-│   ├── model.h5             # Pretrained LSTM model
-│   ├── feature_scaler.save  # Feature normalization
-│   └── target_scaler.save   # Price normalization
-##🔧 Installation & Usage
-### Clone repository
+│ ├── model.h5 # Pretrained LSTM model
+│ ├── feature_scaler.save # Feature normalization
+│ └── target_scaler.save # Price normalization
+
+
+## 🔧 Installation & Usage
+
+```bash
+# Clone repository
 git clone https://github.com/yourusername/stock-lstm-app.git
 cd stock-lstm-app
 
-###Install dependencies
+# Install dependencies
 pip install -r requirements.txt
 
-### Launch application
+# Launch application
 streamlit run app.py
 ##✨ Credits
 -Developed by Mourakshi Thakuria
