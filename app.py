@@ -4,6 +4,7 @@ import numpy as np
 import pandas as pd
 from tensorflow.keras.models import load_model
 import joblib
+import os
 
 # === Load model and scalers ===
 model = load_model("model/model.h5")
@@ -56,10 +57,11 @@ def preprocess(df):
     ]
     last_60 = df[features].tail(60).values
     X_scaled = feature_scaler.transform(last_60)
-    return np.expand_dims(X_scaled, axis=0), df['Close_yfin'].iloc[-1]
+    last_close = float(df['Close_yfin'].iloc[-1])
+    return np.expand_dims(X_scaled, axis=0), last_close
 
 # === Streamlit UI ===
-st.set_page_config(page_title="Stock Predictor")
+st.set_page_config(page_title="Stock Predictor", layout="centered")
 st.title("📈 Stock Price Predictor & Investment Simulator")
 
 ticker = st.text_input("Enter Stock Symbol:", "AAPL")
@@ -74,12 +76,13 @@ if st.button("Predict Next Day Price"):
 
         dummy = np.zeros((1, len(feature_scaler.feature_names_in_)))
         dummy[0][0] = pred_scaled
-        predicted_price = target_scaler.inverse_transform(dummy)[0][0]
+        predicted_price = float(target_scaler.inverse_transform(dummy)[0][0])
 
         st.success("Prediction Complete!")
         st.metric("📉 Last Close Price", f"${last_price:.2f}")
         st.metric("📈 Predicted Next Price", f"${predicted_price:.2f}")
 
+        # Investment simulation
         profit = (predicted_price - last_price) * (investment / last_price)
         st.subheader("💰 Investment Simulation")
         st.write(f"If you invest **${investment:.2f}** now:")
@@ -91,6 +94,11 @@ if st.button("Predict Next Day Price"):
     except Exception as e:
         st.error(f"Prediction failed: {e}")
 
+# === Plot Historical Chart ===
 if df is not None:
-    st.subheader(f"📊 Historical Prices for {ticker}")
-    st.line_chart(df['Close_yfin'][-60:])
+    st.subheader(f"📊 Historical Close Price for {ticker}")
+    try:
+        st.line_chart(df['Close_yfin'].tail(60))
+    except Exception as e:
+        st.warning(f"Could not plot chart: {e}")
+
