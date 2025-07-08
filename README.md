@@ -58,11 +58,22 @@ pip install -r requirements.txt
 # Launch application
 streamlit run app.py
 ```
-##✨ Credits
--Developed by Mourakshi Thakuria
+## ✨ Credits
 
--Built with TensorFlow, Streamlit, and yfinance
+**Developer**: Mourakshi Thakuria  
+**Built with**:
+- TensorFlow
+- Streamlit
+- yfinance  
+**Visualization**: Plotly
 
--Visualization using Plotly
-##📄 License
-MIT License - Free for use, modification, and distribution
+---
+
+## 📜 License 
+
+This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for details.  
+Permissions include:
+- ✅ Free use
+- ✅ Modification
+- ✅ Distribution
+- ✅ Private use
