@@ -39,14 +39,14 @@ An interactive Streamlit web app that predicts next-day stock prices using a dee
 │   ├── feature_scaler.save  # Feature normalization
 │   └── target_scaler.save   # Price normalization
 ##🔧 Installation & Usage
-# Clone repository
+### Clone repository
 git clone https://github.com/yourusername/stock-lstm-app.git
 cd stock-lstm-app
 
-# Install dependencies
+###Install dependencies
 pip install -r requirements.txt
 
-# Launch application
+### Launch application
 streamlit run app.py
 ##✨ Credits
 -Developed by Mourakshi Thakuria
